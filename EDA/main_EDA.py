@@ -74,10 +74,3 @@ serviceDetail_df.to_csv(Detail_csv_path, index=False, encoding="utf-8-sig")
 print(f"✅ CSV 저장 완료: {Detail_csv_path}")
 supportConditions_df.to_csv(Conditions_csv_path, index=False, encoding="utf-8-sig")
 print(f"✅ CSV 저장 완료: {Conditions_csv_path}")
-supportconditions_model_df.to_csv(Conditions_model_csv_path, index=False, encoding="utf-8-sig")
-print(f"✅ CSV 저장 완료: {Conditions_model_csv_path}")
-
-# 7. 컬럼 목록 확인
-print("📄 supportConditions_df의 컬럼 목록:")
-for col in supportConditions_df.columns:
-    print(col)
