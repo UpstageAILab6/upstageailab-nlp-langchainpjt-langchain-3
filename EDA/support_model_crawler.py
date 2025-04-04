@@ -59,6 +59,6 @@ def crawl_support_conditions_model(verbose: bool = True) -> pd.DataFrame:
 
     df = pd.DataFrame(data)
     if verbose:
-        print(f"✅ 크롤링 완료: {len(df)}개 항목 수집됨")
+        print(f"크롤링 완료: {len(df)}개 항목 수집됨")
 
     return df
