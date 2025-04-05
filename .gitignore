@@ -260,4 +260,8 @@ $RECYCLE.BIN/
 
 # End of https://www.toptal.com/developers/gitignore/api/python,jupyternotebooks,windows,linux,macos
 
-EDA/data/
+# EDA 폴더 내부 무시할 파일
+EDA/data/*
+
+# KJH 폴더 내부 무시할 파일
+KJH/faiss_index/*
