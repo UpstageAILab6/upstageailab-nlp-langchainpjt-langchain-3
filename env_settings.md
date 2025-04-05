@@ -6,6 +6,9 @@
 > ⚠️ `.env` 파일은 **절대 깃허브 등에 공개되지 않도록 주의하세요!**  
 > `.gitignore`에 반드시 포함되어야 합니다.
 
+📌 `.env` 파일은 **프로젝트 최상위 폴더**에 위치해야 합니다.  
+📌 아래 기본 구조를 복사해 `.env` 파일에 붙여 넣고, **API 키 부분만 개인 키로 변경**하세요.
+
 ---
 
 ## ✅ 1. 기본 구조 예시
@@ -25,5 +28,5 @@ OPENAI_API_KEY=sk-로_시작하는_키
 LANGSMITH_API_KEY=lsv2_로_시작하는_키
 LANGSMITH_ENDPOINT=https://api.smith.langchain.com
 
-# ✅ 프로젝트 이름 (LangSmith에서 구분 용도)
+# ✅ 프로젝트 이름 (LangSmith에서 프로젝트 구분용)
 LANGCHAIN_PROJECT=프로젝트_이름
