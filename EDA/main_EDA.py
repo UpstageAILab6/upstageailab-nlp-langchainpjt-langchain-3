@@ -10,13 +10,16 @@ from support_model_crawler import crawl_support_conditions_model  # 조건 설�
 # ---------------------------
 # 🔧 1. .env 로딩 및 API 키 인코딩
 # ---------------------------
-load_dotenv()  # .env 파일에서 환경 변수 로드
 
-raw_key = os.getenv("raw_key")  # raw_key 환경 변수 로드
-if raw_key is None:  # 환경 변수 없을 시 예외 처리
-    raise ValueError("❌ .env에서 'raw_key'를 찾을 수 없습니다.")
+base_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))  # EDA 기준 상위 경로 (RAG)
+env_path = os.path.join(base_dir, ".env")
+load_dotenv(dotenv_path=env_path)
 
-encoded_key = urllib.parse.quote(raw_key, safe='')  # URL 인코딩된 API 키 생성
+GOV24_API_KEY = os.getenv("GOV24_API_KEY")  # GOV24_API_KEY 환경 변수 로드
+if GOV24_API_KEY is None:  # 환경 변수 없을 시 예외 처리
+    raise ValueError("❌ .env에서 'GOV24_API_KEY'를 찾을 수 없습니다.")
+
+encoded_key = urllib.parse.quote(GOV24_API_KEY, safe='')  # URL 인코딩된 API 키 생성
 
 # ---------------------------
 # 📁 2. 경로 설정
