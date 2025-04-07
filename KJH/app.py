@@ -5,7 +5,7 @@ from dotenv import load_dotenv
 from langchain_community.vectorstores import FAISS
 
 from modules.data_loader import detect_changes, convert_to_documents
-from modules.chunk_splitter import split_by_token
+from modules.chunk_splitter import split_by_token, split_by_char
 from modules.upstage_embedding import UpstageEmbeddings
 from modules.llm_prompt import make_prompt, query_solar
 
@@ -42,7 +42,7 @@ def load_db():
 
     if added or updated or deleted or not os.path.exists(INDEX_FILE):
         documents = convert_to_documents(new_data)
-        split_docs = split_by_token(documents)
+        split_docs = split_by_char(documents)
         db = FAISS.from_documents(split_docs, embedding)
         db.save_local(INDEX_DIR)
     else:

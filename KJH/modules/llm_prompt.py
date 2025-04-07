@@ -1,28 +1,22 @@
 import requests
 
 def make_prompt(retrieved_docs, query):
-    if not retrieved_docs:
-        return (
-            "You are an assistant for answering questions about Korean government support policies.\n"
-            "There is no retrieved context available.\n"
-            f"Answer the following question as best as you can or say '잘 모르겠습니다.'\n\n"
-            f"# Question:\n{query}\n\n# Answer:"
-        )
-
     retrieved_text = "\n\n".join([doc.page_content for doc in retrieved_docs])
     prompt = f"""
-        You are an assistant for answering questions about Korean government support policies.
-        Use the following retrieved context to answer the user's question.
-        If the answer is not in the context, say "잘 모르겠습니다."
-        Respond in Korean.
+            너는 복지 혜택을 추천해주는 챗봇이야.
+            아래는 사용자 질문과 관련된 혜택 문서들이야."
 
-        # Context:
-        {retrieved_text}
+            # Context:
+            {retrieved_text}
 
-        # Question:
-        {query}
+            # Question:
+            {query}
 
-        # Answer:
+            # Answer:
+            - 관련된 복지 혜택을 자연스럽고 친절하게 설명해줘
+            - 대상 조건과 신청 방법도 간단히 알려줘
+            - 혜택이 여러 개면 순서대로 정리해줘
+            - 한글로, 부드럽고 공손한 말투로 작성해줘                    
         """
     return prompt
 

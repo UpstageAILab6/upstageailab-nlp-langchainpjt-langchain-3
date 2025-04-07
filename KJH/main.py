@@ -50,7 +50,7 @@ if added or updated or deleted:
     print(len(added),len(updated),len(deleted))
     documents = convert_to_documents(new_data)
     # 청크 분할
-    token_split_docs = split_by_token(documents=documents)
+    token_split_docs = split_by_char(documents=documents)
 
     # FAISS 인덱스 생성 및 저장
     db = FAISS.from_documents(token_split_docs, embedding)  # 문서 임베딩 후 FAISS 인덱스 생성
