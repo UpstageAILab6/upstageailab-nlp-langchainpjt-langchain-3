@@ -265,3 +265,8 @@ KJH/data/*
 
 # KJH 폴더 내부 무시할 파일
 KJH/faiss_index/*
+
+# KJH 내부의 특정 파일 무시
+KJH/data/gov24_serviceList_all.json
+KJH/data/serviceDetail_all.json
+KJH/faiss_index/
