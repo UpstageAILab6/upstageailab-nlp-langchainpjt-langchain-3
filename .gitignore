@@ -265,3 +265,4 @@ KJH/data/
 
 # KJH 폴더 내부 무시할 파일
 KJH/faiss_index/
+faiss_index/

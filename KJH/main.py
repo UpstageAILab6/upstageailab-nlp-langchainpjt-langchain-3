@@ -24,9 +24,8 @@ OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
 LANGSMITH_API_KEY = os.getenv("LANGSMITH_API_KEY")
 
 # data_pipeline 실행
-# run_gov24_data_pipeline()
+run_gov24_data_pipeline()
 
-# JSON 불러오기
 # 🔹 JSON 로드 (new)
 with open(DATA_PATH, "r", encoding="utf-8") as f:
     new_data = json.load(f)
@@ -58,8 +57,6 @@ if added or updated or deleted:
     db.save_local("faiss_index")  # 인덱스를 로컬 디렉토리에 저장
 else:
     print("수정사항이 없어 임베딩 과정을 건너 뛰었습니다.")
-
-
 
 # ✅ allow_dangerous_deserialization=True 추가
 db = FAISS.load_local(
