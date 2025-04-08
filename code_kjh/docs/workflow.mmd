@@ -1,0 +1,18 @@
+graph LR
+
+A[Start] --> B[Data Collection - gov24]
+B --> C[Load New Data]
+B --> D[Load Previous Data]
+C & D --> E[Detect Changes]
+
+E --> F{Changes Detected?}
+F -- Yes --> G[Convert, Chunk, Embed & FAISS save]
+F -- No --> H[Skip Embedding]
+
+G & H --> I[Load FAISS Index]
+I --> J[User Query Input]
+J --> K[Search Similar Docs]
+K --> L[Summarize & Show Tags]
+L --> M[Prompt → LLM → Answer]
+M --> N[Print Result]
+N --> O[End]
