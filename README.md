@@ -34,10 +34,14 @@ LangChain 기반 문서 QA 시스템의 구축 및 운영을 위한 파이프라
    - Notion, PDF, 사내 위키 등에서 문서 수집 후 S3 저장
 2. **문서 파싱 및 전처리**
    - LangChain의 DocumentLoader 사용
-   - Chunking, Text Cleaning
+   - 각 정부정책의 주요 항목(지원대상, 신청방법, 문의처 등)을 기준으로 세분화된 문서 조각(chunk) 생성
+   - 텍스트 정제(Text Cleaning): 개행문자 제거, 특수기호 처리 등
+   - 각 조각은 LangChain의 Document 형태로 변환하여 메타데이터(서비스명, 서비스ID)와 함께 저장
 3. **임베딩 및 벡터화**
-   - OpenAI / HuggingFace Embedding 모델 사용
-   - FAISS / Weaviate / Qdrant 등을 활용한 벡터 DB 구축
+   - OpenAI / Solar Embedding 모델 사용
+   - 배치 단위 임베딩 처리로 API 호출 최적화 (VectorStoreManager에서 관리
+   - FAISS / Weaviate / Qdrant 등을 활용한 벡터 DB로 저장 및 재사용 가능
+   - 저장된 벡터 인덱스를 불러와 유사도 검색 기반 문서 검색 가능
 4. **데이터 버전 관리**
    - DVC 및 S3로 문서 버전 관리
 
