@@ -51,10 +51,19 @@ LangChain 기반 문서 QA 시스템의 구축 및 운영을 위한 파이프라
 - LLM: OpenAI GPT-4 / Solar 선택 가능
 - 응답 포맷은 Markdown 기반 MarkdownFormatter로 구조화 (정책 항목별 시각화 목적)
 
-## **4. 모델 학습 및 실험 추적**
-- 필요 시, 사내 문서로 파인튜닝된 LLM 학습
-- MLflow를 통해 실험, 하이퍼파라미터, 모델 버전 관리
-- Optuna / Weights & Biases 연동 가능
+## **4. 리트리버 구성 및 그라운드체킹 기반 실험 추적**
+- 리트리버 구성
+   HybridMMRRetriever: 유사도 기반 Top-K 검색 + Maximal Marginal Relevance (MMR) 적용
+   → 중복 문서 제거 + 다양성 있는 근거 확보
+   → 실험 파라미터 (top_k_sim, top_k_final, lambda_mult) 튜닝 가능
+- 그라운드체킹(Grounding Checker)
+  응답 문장을 벡터 DB에서 검색된 문서와 매핑
+   → 문장 단위 유사도 계산 (Cosine Similarity 기반)
+   → 그라운딩 여부와 근거 문장 출력 + 시각화 지원
+- 기타 로컬 추적
+  logger.py로 사용자 입력, 모델 응답, Grounding 결과를 로그 파일로 기록
+  Streamlit 세션 기반 ChatHistory로 히스토리 관리
+  → 실시간 평가 및 모델 동작 추적 가능
 
 ## **5. 실행 환경 구성**
 1. **FastAPI 기반 API 서버 구성 (옵션)**
