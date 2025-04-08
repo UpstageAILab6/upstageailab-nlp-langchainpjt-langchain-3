@@ -46,9 +46,10 @@ LangChain 기반 문서 QA 시스템의 구축 및 운영을 위한 파이프라
    - DVC 및 S3로 문서 버전 관리
 
 ## **3. LLM 및 RAG 파이프라인 구성**
-- LangChain의 RetrievalQA 모듈 활용
-- Chain 구성: Embedding → Retriever → LLM(응답)
-- LLM: OpenAI GPT-4 / Mistral / Claude 등 선택 가능
+- 커스텀 Retriever 기반 문서 검색
+- LangChain 체인 구성: Query → 임베딩 → 벡터 검색(Retriever) → 프롬프트 구성 → LLM → 응답 파싱
+- LLM: OpenAI GPT-4 / Solar 선택 가능
+- 응답 포맷은 Markdown 기반 MarkdownFormatter로 구조화 (정책 항목별 시각화 목적)
 
 ## **4. 모델 학습 및 실험 추적**
 - 필요 시, 사내 문서로 파인튜닝된 LLM 학습
